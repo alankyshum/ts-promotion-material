@@ -1,8 +1,9 @@
+import { isTrue, tellMeYourLittleSecret } from "./lib";
+
 /* ========================================================================== */
 /*                       What can I get from typescript?                      */
 /* ========================================================================== */
-
-const jsDocFeatures = {
+export const jsDocFeatures = {
   // for coding
   "member completions": () => {
 		class Person {
@@ -11,7 +12,7 @@ const jsDocFeatures = {
 		}
 
 		const person = new Person();
-		return person./* TODO add your code here */;
+		return person./* TODO show the first name */;
 	},
 
   "parameters completions": () => {
@@ -24,30 +25,27 @@ const jsDocFeatures = {
       return a + b;
     }
 
-    return sum(/* TRY MR! add your code here */);
+    return sum(/* TODO return the "answer of everything", 42 */);
   },
 
   "refactoring all references": () => {
-		const isTrue = false;
+		console.log(isTrue);
 
 		if (isTrue) return 'this is true';
 		if (!isTrue) return 'this is false';
 
-		/* notice an issue with the name? You can "refactor" it with 1 shortcut */
-		/* TODO command+shift+r on vsCode; or shift-F6 on IntelliJ */
+		/* TODO notice an issue with the name? You can "refactor" it with 1 shortcut */
+		/* command+shift+r on vsCode; or shift-F6 on IntelliJ */
 	},
 
   // for debugging
   "jump to references and definitions": () => {
-		const variableFromAnotherFile = 'variable content';
-
-		return variableFromAnotherFile;
-		/* TODO try: "peek implementation", and add shortcut to that */
-		/* TODO try: "peek references", and add shortcut to that */
+		tellMeYourLittleSecret('How do celebrities stay cool?');
+		/* TODO try: "peek implementation" */
 	},
 };
 
-const typescriptFeatures = {
+export const typescriptFeatures = {
   // for coding
   "member completions, with support of access modifiers": () => {
 		class Person {
@@ -71,7 +69,7 @@ const typescriptFeatures = {
 		}
 
 		class Location {
-			country: keyof typeof Countries;
+			country!: keyof typeof Countries;
 			name?: string;
 			city?: string;
 			latitude?: number;
@@ -98,6 +96,7 @@ const typescriptFeatures = {
 
 		const sum = aggregate(/* TODO pass some values to this function */);
 		const concat = aggregate(/* TODO pass some values to this function */);
+		const sumConcat = aggregate(1, '2'); /* TODO you can't mix different types, please fix me */
 	},
 
   "override members, and let the editor check its validity for you": () => {
@@ -109,7 +108,7 @@ const typescriptFeatures = {
 
 		class Fox extends Animal {
 			override say() {
-				/* TODO What does the fox say? */
+				return /* TODO What does the fox say? */;
 			}
 		}
 	},
@@ -130,7 +129,8 @@ const typescriptFeatures = {
 
   "author types for lib that don't have types yet": () => {
 		// e.g. jSecure, which is global variable you can never get types of
-		const sanitizedUrl = jSecure./* TODO say you want to sanitize 'https://shady.com' */;
+		const url = 'https://shady.com';
+		const sanitizedUrl = jSecure./* TODO say you want to sanitize the `url` */;
 	},
 
   "you safely pass in parameters to a function": () => {
@@ -161,11 +161,11 @@ const typescriptFeatures = {
 
   // future
   "editor validates tracking schema for you": () => {
-		return 'https://kshum-ts-promo/tracking-with-typescript';
+		return 'https://go/kshum-ts-promo/tracking-with-typescript';
 	},
 
   "editor validates graphql schema for you": () => {
-		return 'https://kshum-ts-promo/graphql-demo';
+		return 'https://go/kshum-ts-promo/graphql-demo';
 	},
 };
 
@@ -173,19 +173,19 @@ const typescriptFeatures = {
 /*                        I’m excited, how can I help?                        */
 /* ========================================================================== */
 
-const easyOptions = [
+export const easyOptions = [
   "refactor leaf modules",
   "refactor constants, native classes, etc.",
 ];
 
-const mediumOptions = [
+export const mediumOptions = [
   "refactor components",
   "refactor services",
   "refactor controllers",
   "refactor routes",
 ];
 
-const hardOptions_shouldWait = [
+export const hardOptions_shouldWait = [
   "ember data models", // should wait until ember data gets more support, to wait for graphql adoption
 ];
 
@@ -193,7 +193,14 @@ const hardOptions_shouldWait = [
 /*                      I’m excited, how can I get help?                      */
 /* ========================================================================== */
 
-const help = {
+export const moreResources = {
+	officialDoc: 'https://www.typescriptlang.org/docs/handbook/intro.html',
+	cheatSheet: 'https://basarat.gitbook.io/typescript/',
+	tsForEmber: 'https://docs.ember-cli-typescript.com/',
+	moreFunGame: 'https://github.com/mike-north/making-typescript-stick/blob/master/games/Jeopardy-1.pptx?raw=true'
+};
+
+export const help = {
   lss: {
     askUiChannel() {
       return "#lss-ui";
@@ -214,7 +221,7 @@ const help = {
     codeSearch() {
       return [
         "https://go/kshum-ts-promo/code-search",
-        "https://kshum-ts-promo/github-search",
+        "https://go/kshum-ts-promo/github-search",
       ];
     },
   },
