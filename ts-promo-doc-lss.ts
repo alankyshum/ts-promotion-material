@@ -1,16 +1,15 @@
 /* ========================================================================== */
-/*                       What can I get as LSS engineer?                      */
+/*                       What can I get from typescript?                      */
 /* ========================================================================== */
 
 const jsDocFeatures = {
   // for coding
   "member completions": () => {
 		class Person {
-			firstName: string;
-			lastName: string;
+			firstName?: string;
+			lastName?: string;
 		}
 
-		/** @type {Person} */
 		const person = new Person();
 		return person./* TODO add your code here */;
 	},
@@ -52,8 +51,8 @@ const typescriptFeatures = {
   // for coding
   "member completions, with support of access modifiers": () => {
 		class Person {
-			public firstName: string;
-			private age: number;
+			public firstName?: string;
+			private age!: number;
 			public get canDrink() {
 				return this.age > 21;
 			}
