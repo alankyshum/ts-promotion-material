@@ -1,0 +1,10 @@
+{
+  "name": "ts-promo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Kayi Shum <kshum@linkedin.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.6.3"
+  }
+}
