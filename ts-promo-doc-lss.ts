@@ -125,33 +125,49 @@ const typescriptFeatures = {
 
 		async function getData(url: string) {
 			const response: NameResponse = await fetch(url);
-			return response.data.name;
+			return response.data.name; /* TODO unsafe code here */
 		}
 	},
 
   "author types for lib that don't have types yet": () => {
 		// e.g. jSecure, which is global variable you can never get types of
-
+		const sanitizedUrl = jSecure./* TODO say you want to sanitize 'https://shady.com' */;
 	},
+
   "you safely pass in parameters to a function": () => {
 		// e.g. constructor using assertions
+		class SmartPhone {
+			weight!: number;
+			screenSize!: number;
+			batteryCapacity!: number;
 
-	},
+			get price() {
+				return this.weight * this.screenSize * this.batteryCapacity;
+			}
 
-  // for debugging
-  "incompatible types are caught during development": () => {
+			constructor(specifications: Specification) {
+				Object.assign(this, specifications);
+			}
+		}
 
+		const smartPhone = new SmartPhone({
+			weight: 196,
+			screenSize: 456,
+			/* TODO what else is missing here */
+		});
+
+		type Specification = Pick<SmartPhone, 'weight' | 'screenSize' | 'batteryCapacity' | 'wheelSize'>
+		/* TODO a type that relates to the class that matter, so you can't accidentally add wrong properties */
 	},
 
   // future
   "editor validates tracking schema for you": () => {
-
+		return 'https://kshum-ts-promo/tracking-with-typescript';
 	},
 
   "editor validates graphql schema for you": () => {
-
+		return 'https://kshum-ts-promo/graphql-demo';
 	},
-
 };
 
 /* ========================================================================== */
@@ -186,21 +202,21 @@ const help = {
   },
   linkedin: {
     cloneTicketToTsEarlyAdoptersSupport() {
-      return "https://go/kshum-promo/ts-support-ticket";
+      return "https://go/kshum-ts-promo/ts-support-ticket";
     },
     slackChannel() {
       return "#typescript";
     },
+		toolings() {
+			return 'https://go/typescript';
+		}
   },
   "self-help": {
     codeSearch() {
       return [
-        "https://go/kshum-promo/code-search",
-        "https://kshum-promo/github-search",
+        "https://go/kshum-ts-promo/code-search",
+        "https://kshum-ts-promo/github-search",
       ];
     },
   },
 };
-
-
-[ ] break down files to be migrated
